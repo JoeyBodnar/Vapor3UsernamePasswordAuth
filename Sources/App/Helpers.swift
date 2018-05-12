@@ -20,5 +20,5 @@ class Helpers {
             randomString += String(newCharacter)
         }
         return randomString
-    }
+    } 
 }
