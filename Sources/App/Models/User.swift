@@ -8,6 +8,11 @@
 import Foundation
 import Vapor
 import FluentPostgreSQL
+import Authentication
+extension User: PasswordAuthenticatable {
+    static var usernameKey: WritableKeyPath<User, String> { return \User.username }
+    static var passwordKey: WritableKeyPath<User, String> { return \User.password }
+}
 
 final class User: PostgreSQLModel {
     var id: Int?

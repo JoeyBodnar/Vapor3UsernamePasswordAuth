@@ -8,7 +8,6 @@ public func routes(_ router: Router) throws {
     }
     
     let userController = UserController()
-    router.get("createUser", use: userController.createUser)
-    router.get("loginUser", use: userController.loginUser)
-
+    router.post("createUser", use: userController.createUser)
+    router.post("loginUser", use: userController.loginUser)
 }
