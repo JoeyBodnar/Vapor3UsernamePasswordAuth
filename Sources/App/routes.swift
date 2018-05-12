@@ -10,4 +10,10 @@ public func routes(_ router: Router) throws {
     let userController = UserController()
     router.post("createUser", use: userController.createUser)
     router.post("loginUser", use: userController.loginUser)
+    
+    let tokenAuthenticationMiddleware = User.tokenAuthMiddleware()
+    let authedRoutes = router.grouped(tokenAuthenticationMiddleware)
+    authedRoutes.get("this/protected/route") { request in
+        return "this is a protected route! you're authenticated!"
+    }
 }
